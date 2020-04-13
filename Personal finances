@@ -1,0 +1,71 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int pin;
+	int password = 1994;
+	int count = 0;
+	int entry;
+	int deposit = 0.0;
+	int withdraw = 0.0;
+	int balance = 0.0;
+	bool isTrue = true;
+	system("Color 4E");
+	do
+	{
+		cout << "*Welcome to your finances*\n";
+		cout << "Enter your pin:\n";
+		cin >> pin;
+
+		if (pin == password)
+		{
+			do {
+				cout << "*Welcome to your finances*\n"
+					<< "1. Assets\n"
+					<< "2. Liabilities\n"
+					<< "3. Balance\n"
+					<< "4. Exit\n";
+				cout << "Choose an option:\n ";
+				cin >> entry;
+
+				switch (entry) {
+				case 1:
+					cout << "Insert your assets\n ";
+					cin >> deposit;
+					balance = balance + deposit;
+					break;
+				case 2:
+					if (balance <= 0) {
+						cout << "You don't have any money! You should try to get one more job\n";
+					}
+					else {
+						cout << " Insert your liabilities\n";
+						cin >> withdraw;
+						balance = balance - withdraw;
+					}
+					
+					break;
+				case 3:
+					cout << "Your balance is: " << balance << endl;
+					break;
+				case 4:
+					cout << "Have a nice day\n";
+					isTrue = false;
+					break;
+				}
+			} while (isTrue != false);
+		}
+		else
+		{
+			count++;
+			if (count == 3)
+				isTrue = false;
+			else
+				cout << "Wrong pin!\n";
+		}
+
+	} while (isTrue != false);
+	return 0;
+}
